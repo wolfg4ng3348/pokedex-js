@@ -1,3 +1,4 @@
+/* Estilos para el fondo de pantalla */
 body {
     font-family: Arial, sans-serif;
     background-image: url('assets/img/arceus-gawr-gura-pokemon-legends-arceus.jpg'); /* Cambia 'ruta-a-tu-imagen-de-fondo.jpg' por la ruta real de tu imagen */
@@ -31,6 +32,25 @@ body {
     font-size: 1em;
 }
 
+.buscar-button {
+    padding: 12px 24px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.buscar-button:hover {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
 .pokemon-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -41,20 +61,28 @@ body {
     background: #fafafa;
     border: 1px solid #eee;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px; /* Aumentar el padding para dar más espacio al contenido */
     text-align: center;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .pokemon-card img {
-    width: 120px; /* Imagenes más grandes */
-    height: 120px; /* Imagenes más grandes */
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px; /* Agregar margen inferior para separar la imagen del texto */
 }
 
 .pokemon-card h2 {
-    font-size: 1.2em;
-    margin: 0.5em 0;
+    font-size: 1.5em; /* Aumentar el tamaño de la fuente del nombre del Pokémon */
+    margin: 0.5em 0 0.2em; /* Ajustar los márgenes del nombre del Pokémon */
 }
+
+.pokemon-card p {
+    font-size: 1em; /* Tamaño de fuente estándar para el texto */
+    line-height: 1.4; /* Ajustar el espaciado entre líneas */
+    margin-bottom: 5px; /* Agregar un pequeño margen inferior para separar los párrafos */
+}
+
 .pagination {
     display: flex;
     justify-content: space-between;
@@ -69,3 +97,49 @@ body {
     cursor: pointer;
     background-color: #fafafa;
 }
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 99999; /* Asegurar que el botón de cierre esté por encima de todo */
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
