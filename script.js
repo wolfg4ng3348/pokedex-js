@@ -3,6 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
     let allPokemons = [];
 
+    const typeTranslations = {
+        normal: 'Normal',
+        fighting: 'Lucha',
+        flying: 'Volador',
+        poison: 'Veneno',
+        ground: 'Tierra',
+        rock: 'Roca',
+        bug: 'Insecto',
+        ghost: 'Fantasma',
+        steel: 'Acero',
+        fire: 'Fuego',
+        water: 'Agua',
+        grass: 'Planta',
+        electric: 'Eléctrico',
+        psychic: 'Psíquico',
+        ice: 'Hielo',
+        dragon: 'Dragón',
+        dark: 'Siniestro',
+        fairy: 'Hada'
+    };
+
+    const statTranslations = {
+        hp: 'Salud',
+        attack: 'Ataque',
+        defense: 'Defensa',
+        'special-attack': 'Ataque Especial',
+        'special-defense': 'Defensa Especial',
+        speed: 'Velocidad'
+    };
+
     async function fetchAllPokemons() {
         try {
             const response = await fetch(apiUrl);
@@ -30,12 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
         name.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
     
         const types = document.createElement('p');
-        types.textContent = `Tipos: ${pokemon.types.map(type => type.type.name).join(', ')}`;
+        types.textContent = `Tipos: ${pokemon.types.map(type => typeTranslations[type.type.name]).join(', ')}`;
     
         const statsList = document.createElement('ul');
         pokemon.stats.forEach(stat => {
             const statItem = document.createElement('li');
-            statItem.textContent = `${stat.stat.name}: ${stat.base_stat}`;
+            statItem.textContent = `${statTranslations[stat.stat.name]}: ${stat.base_stat}`;
             statsList.appendChild(statItem);
         });
     
@@ -55,8 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     }
     
-    
-
     function displayPokemons(pokemonArray) {
         pokemonList.innerHTML = '';
         pokemonArray.forEach(pokemon => {
@@ -75,6 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    window.limpiarResultados = function() {
+        displayPokemons([]);
+        document.getElementById('search').value = '';
+    };
+
     // Función para mostrar el modal
     function mostrarModal() {
         document.getElementById('modal').style.display = "block";
@@ -82,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para cerrar el modal
     function cerrarModal() {
-        document.querySelector('.modal').style.display = "none";
+        document.getElementById('modal').style.display = "none";
     }    
     
     // Cargar los Pokémon al inicio
@@ -94,4 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicialmente no mostrar ningún Pokémon
     displayPokemons([]);
+
+    // Event listener para cerrar el modal al hacer clic en la "X"
+    document.getElementById('close-modal').addEventListener('click', cerrarModal);
 });

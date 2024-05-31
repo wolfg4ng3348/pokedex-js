@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokédex</title>
+    <link rel="icon" href="assets/img/pokebola.svg" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
 
-    <div class="pokedex">
-        <h1>Pokedex</h1>
-        <input type="text" id="search" placeholder="Buscar Pokémon...">
-        <button onclick="buscarPokemon()" class="buscar-button">Buscar</button>
-        <datalist id="pokemon-suggestions"></datalist>
-        <div class="pokemon-list" id="pokemon-list"></div>
+<div class="pokedex">
+    <h1>
+        <span class="pokeball-icon"></span>
+        Pokedex
+        <span class="pokeball-icon"></span>
+    </h1>
+    <input type="text" id="search" placeholder="Buscar Pokemon...">
+    <button onclick="buscarPokemon()" class="buscar-button">Buscar</button>
+    <button onclick="limpiarResultados()" class="limpiar-button">Limpiar</button>
+    <datalist id="pokemon-suggestions"></datalist>
+    <div class="pokemon-list" id="pokemon-list"></div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <p>Por favor ingrese el nombre del Pokémon a buscar.</p>
     </div>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModal()">&times;</span>
-            <p>Por favor ingrese el nombre del Pokémon a buscar.</p>
-        </div>
-    </div>
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
